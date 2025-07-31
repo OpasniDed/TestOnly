@@ -497,7 +497,7 @@ body {
 
 /* Purchase Modal Specific Styles */
 .privilege-info {
-    space-y: 1rem;
+    margin-top: 1rem;
 }
 
 .privilege-preview {
@@ -619,7 +619,7 @@ body {
 
 /* Top Up Modal Specific Styles */
 .topup-content {
-    space-y: 1rem;
+    margin-top: 1rem;
 }
 
 .quick-amounts label {
