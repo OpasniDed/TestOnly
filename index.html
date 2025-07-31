@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta MediumRP - Магазин Привилегий</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="./images/Delta5.png" alt="Delta 5 Logo" class="logo-img">
+                    <div class="header-text">
+                        <h1 class="site-title">Delta MediumRP</h1>
+                        <p class="site-subtitle">Магазин донатов</p>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <!-- Balance display (показывается после входа через Steam) -->
+                    <div class="balance-display" id="balanceDisplay" style="display: none;">
+                        <svg class="wallet-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                        </svg>
+                        <span id="balanceAmount">2,500 ₽</span>
+                        <button class="btn btn-topup" id="topupBtn" title="Пополнить баланс">
+                            <svg class="plus-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- User info (показывается с реальными данными Steam) -->
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <img src="" alt="User Avatar" class="user-avatar">
+                        <span class="username"></span>
+                        <button class="btn btn-outline btn-small" id="logoutBtn">Выйти</button>
+                    </div>
+                    
+                    <!-- Login button (реальный вход через Steam OpenID) -->
+                    <button class="btn btn-primary" id="loginBtn">
+                        <svg class="steam-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169-.356-.425-.689-.749-.961L12 12l4.819 4.801c.324-.272.58-.605.749-.961.132-.278.2-.578.2-.888s-.068-.61-.2-.888v-.904zM12 4.248L7.181 9.049c.324.272.58.605.749.961.132.278.2.578.2.888s-.068.61-.2.888c-.169.356-.425.689-.749.961L12 19.752l4.819-4.801c-.324-.272-.58-.605-.749-.961-.132-.278-.2-.578-.2-.888s.068-.61.2-.888c.169-.356.425.689.749-.961L12 4.248z"/>
+                        </svg>
+                        <span>Войти через Steam</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-logo">
+                    <img src="./images/Delta5.png" alt="Delta 5 Logo" class="hero-logo-img">
+                    <h1 class="hero-title">Delta MediumRP</h1>
+                </div>
+                <h2 class="hero-subtitle">Магазин донатов</h2>
+                <p class="hero-description">
+                    Перед покупкой, убедись что прочитал примечание в самом низу
+                </p>
+            </section>
+
+            <!-- Privileges Grid -->
+            <section class="privileges">
+                <div class="privileges-grid">
+                    <!-- VIP Card -->
+                    <div class="privilege-card">
+                        <div class="card-header">
+                            <div class="card-image-container">
+                                <img src="./images/Delta5.png" alt="VIP" class="card-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <h3 class="card-title">VIP</h3>
+                            <p class="card-description">Базовые привилегии для комфортной игры</p>
+                            <div class="card-duration">30 дней</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-price">50 ₽</div>
+                            <div class="card-features">
+                                <h4>Возможности:</h4>
+                                <ul>
+                                    <li>Доп. слот для захода на сервер</li>
+                                    <li>Выдача одного предмета за раунд</li>
+                                    <li>Специальный префикс VIP</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-purchase" data-title="VIP" data-price="50" data-image="./images/Delta5.png" data-description="Базовые привилегии для комфортной игры" data-duration="30 дней" data-features='["Доп. слот для захода на сервер","Выдача одного предмета за раунд","Специальный префикс VIP"]'>
+                                Купить за 50 ₽
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Card -->
+                    <div class="privilege-card">
+                        <div class="card-header">
+                            <div class="card-image-container">
+                                <img src="./images/Delta5.png" alt="Premium" class="card-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <h3 class="card-title">Premium</h3>
+                            <p class="card-description">Включает все из VIP</p>
+                            <div class="card-duration">30 дней</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-price">100 ₽</div>
+                            <div class="card-features">
+                                <h4>Возможности:</h4>
+                                <ul>
+                                    <li>Выдача 2-х предметов за раунд</li>
+                                    <li>Смена роли 1 раз за раунд</li>
+                                    <li>Специальный префикс Premium</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-purchase" data-title="Premium" data-price="100" data-image="./images/Delta5.png" data-description="Включает все из VIP" data-duration="30 дней" data-features='["Доп. слот для захода на сервер","Выдача 2-х предметов за раунд","Смена роли 1 раз за раунд","Специальный префикс Premium"]'>
+                                Купить за 100 ₽
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Legend Card -->
+                    <div class="privilege-card">
+                        <div class="card-header">
+                            <div class="card-image-container">
+                                <img src="./images/Delta5.png" alt="Legend" class="card-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <h3 class="card-title">Legend</h3>
+                            <p class="card-description">Включает все из Premium</p>
+                            <div class="card-duration">30 дней</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-price">120 ₽</div>
+                            <div class="card-features">
+                                <h4>Возможности:</h4>
+                                <ul>
+                                    <li>Выдача 2-х предметов за раунд</li>
+                                    <li>Смена роли 2 раза за раунд</li>
+                                    <li>Доступ к команде subs и subrole (См примечания)</li>
+                                    <li>Специальный префикс Legend</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-purchase" data-title="Legend" data-price="120" data-image="./images/Delta5.png" data-description="Включает все из Premium" data-duration="30 дней" data-features='["Выдача 2-х предметов за раунд","Смена роли 2 раза за раунд","Доступ к команде subs и subrole (См примечания)","Специальный префикс Legend"]'>
+                                Купить за 120 ₽
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Candy Lover Card -->
+                    <div class="privilege-card">
+                        <div class="card-header">
+                            <div class="card-image-container">
+                                <img src="./images/Delta5.png" alt="CandyLover" class="card-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <h3 class="card-title">Любитель конфет</h3>
+                            <p class="card-description">Видимо кто-то очень любит сладкое :3</p>
+                            <div class="card-duration">30 дней</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-price">150 ₽</div>
+                            <div class="card-features">
+                                <h4>Возможности:</h4>
+                                <ul>
+                                    <li>При спавне вам выдается 3 случайной конфеты</li>
+                                    <li>Шанс 10% на спавн 5 розовых конфет</li>
+                                    <li>Специальный префикс Любитель конфет</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-purchase" data-title="Любитель конфет" data-price="150" data-image="./images/Delta5.png" data-description="Видимо кто-то очень любит сладкое :3" data-duration="30 дней" data-features='["При спавне вам выдается 3 случайной конфеты","Шанс 10% на спавн 5 розовых конфет","Специальный префикс Любитель конфет"]'>
+                                Купить за 150 ₽
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about">
+                <div class="about-header">
+                    <h2>Примечания</h2>
+                    <p>В данном разделе находятся все примечания при выдаче предметов либо выдаче ролей</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <h3>VIP</h3>
+                        <p><b>Выдача предметов</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                        <p><b>Выдача ролей</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Premium</h3>
+                        <p><b>Выдача предметов</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                        <p><b>Выдача ролей</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Premium</h3>
+                        <p><b>Выдача предметов</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                        <p><b>Выдача ролей</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Premium</h3>
+                        <p><b>Выдача предметов</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                        <p><b>Выдача ролей</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Premium</h3>
+                        <p><b>Выдача предметов</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                        <p><b>Выдача ролей</b></p>
+                        <p>Запрещено выдавать: lelelelelelele</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Purchase Confirmation Modal -->
+    <div class="modal-overlay" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Подтверждение покупки</h3>
+                <button class="modal-close" id="purchaseModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="privilege-info">
+                    <div class="privilege-preview">
+                        <img id="privilegeImage" src="" alt="" class="privilege-image">
+                        <div class="privilege-details">
+                            <h4 id="privilegeTitle"></h4>
+                            <p id="privilegeDescription"></p>
+                            <p id="privilegeDuration" class="duration"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="features-preview">
+                        <h5>Включенные возможности:</h5>
+                        <ul id="privilegeFeatures"></ul>
+                    </div>
+                    
+                    <div class="balance-info">
+                        <div class="balance-row">
+                            <span>Текущий баланс:</span>
+                            <span id="currentBalance"></span>
+                        </div>
+                        <div class="balance-row">
+                            <span>Стоимость:</span>
+                            <span id="privilegePrice" class="price"></span>
+                        </div>
+                        <hr>
+                        <div class="balance-row total">
+                            <span>Останется:</span>
+                            <span id="remainingBalance"></span>
+                        </div>
+                    </div>
+                    
+                    <div id="insufficientFunds" class="error-message" style="display: none;">
+                        Недостаточно средств на балансе. Пополните баланс для совершения покупки.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelPurchase">Отменить</button>
+                <button class="btn btn-primary" id="confirmPurchase">Купить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Up Balance Modal -->
+    <div class="modal-overlay" id="topupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <svg class="wallet-icon-modal" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                    Пополнение баланса
+                </h3>
+                <button class="modal-close" id="topupModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="topup-content">
+                    <div class="quick-amounts">
+                        <label>Быстрое пополнение:</label>
+                        <div class="amount-grid">
+                            <button class="amount-btn" data-amount="100">100 ₽</button>
+                            <button class="amount-btn" data-amount="250">250 ₽</button>
+                            <button class="amount-btn" data-amount="500">500 ₽</button>
+                            <button class="amount-btn" data-amount="1000">1,000 ₽</button>
+                            <button class="amount-btn" data-amount="2500">2,500 ₽</button>
+                            <button class="amount-btn" data-amount="5000">5,000 ₽</button>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-amount">
+                        <label for="customAmountInput">Или введите свою сумму:</label>
+                        <div class="input-group">
+                            <input type="number" id="customAmountInput" placeholder="Введите сумму" min="1" step="1">
+                            <span class="currency">₽</span>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-header">
+                            <svg class="card-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                            </svg>
+                            <span>Способы оплаты:</span>
+                        </div>
+                        <ul class="payment-list">
+                            <li>Банковские карты (Visa, MasterCard, МИР)</li>
+                            <li>Электронные кошельки (QIWI, ЮMoney)</li>
+                            <li>Мобильные платежи</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="topupPreview" class="topup-preview" style="display: none;">
+                        К пополнению: <span id="topupAmount"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelTopup">Отменить</button>
+                <button class="btn btn-primary" id="confirmTopup" disabled>Пополнить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
